@@ -2,19 +2,21 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model EjsU8_SG_Ej3.Models.Entities.clsPersona
-
+    
 <div class="text-center">
-    @using (Html.BeginForm("PersonaModificada", "Home", FormMethod.Post))
+    @using (Html.BeginForm(FormMethod.Post))
     {
         <input type="text" name="id" value="@Model.Id" hidden>
         <br />
         <br />
         <label>Nombre:</label>
-        @Html.TextBox("nombre")
+        @Html.TextBox("Nombre", Model.Nombre)
+        @Html.ValidationMessageFor(persona => persona.Nombre)
         <br />
         <br />
         <label>Apellidos:</label>
         @Html.TextBoxFor(persona => persona.Apellidos)
+        @Html.ValidationMessageFor(persona => persona.Apellidos)
         <br />
         <br />
         <label>Direccion:</label>
@@ -23,6 +25,7 @@
         <br />
         <label>Edad:</label>
         @Html.TextBoxFor(persona => persona.Edad)
+        @Html.ValidationMessageFor(persona => persona.Edad)
         <br />
         <br />
         <button type="submit">Guardar</button>

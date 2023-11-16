@@ -15,9 +15,18 @@ namespace EjsU8_SG_Ej3.Controllers
             return View(persona);  
         }
         [HttpPost]
-        public IActionResult PersonaModificada(clsPersona persona)
+        public IActionResult Editar(clsPersona persona)
         {
-            return View(persona);
+            IActionResult action;
+            if (!ModelState.IsValid)
+            {
+                action = View(persona);
+            }
+            else
+            {
+                action = View("PersonaModificada", persona);
+            }
+            return action;
         }
     }
 }
